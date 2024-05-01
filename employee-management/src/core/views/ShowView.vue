@@ -135,54 +135,10 @@ employeeService.getEmployeeById(id)
 
 .employee-details-section p {
   line-height: 1.5;
+  text-align: justify;
 }
 
-.employee-skills {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
 
-.employee-skills li {
-  display: inline-block;
-  background-color: #ccc;
-  color: #333;
-  padding: 0.5rem 1rem;
-  border-radius: 3px;
-  margin-right: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.employee-projects {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.employee-projects h3 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.project-tech-stack {
-  margin-top: 0.5rem;
-}
-
-.project-tech-stack ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.project-tech-stack li {
-  display: inline-block;
-  background-color: #ccc;
-  color: #333;
-  padding: 0.5rem 1rem;
-  border-radius: 3px;
-  margin-right: 0.5rem;
-  margin-bottom: 0.5rem;
-}
 
 
 </style>

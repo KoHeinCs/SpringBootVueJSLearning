@@ -39,6 +39,7 @@ const showDetails = () => {
 }
 
 const editEmployee = () => {
+  router.push({name:"edit",params:{id:props.employee.id}})
 }
 
 const deleteEmployee = () => {

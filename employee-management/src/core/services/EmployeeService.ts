@@ -1,5 +1,4 @@
 import apiClient from "@/core/utils/apiClient";
-import HttpResponse from "@/core/types/HttpResponse";
 import Employee from "@/core/types/Employee";
 
 
@@ -24,11 +23,17 @@ class EmployeeService {
                 .catch((err)=>{console.log(err)})
     }
 
-    deleteEmployeeById = (id:any) => {
-        return apiClient
+    deleteEmployeeById = async (id:any) => {
+        return await apiClient
             .delete(`/employee/delete/${id}`)
             .then((resp)=> resp.data)
             .catch((err) => console.log(err))
+    }
+
+    updateEmployeeById =(id:any,employee:Employee) => {
+        return apiClient.post(`/employee/update/${id}`,employee)
+            .then((resp)=> resp.data)
+            .catch((error)=> console.log(error))
     }
 
 
