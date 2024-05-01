@@ -4,7 +4,7 @@
     <div class="employee-header">
 
       <div class="employee-avatar">
-        <img alt="Employee Avatar"/>
+        <img src="../../assets/logo.png" alt="Employee Avatar"/>
       </div>
 
       <div class="employee-info">

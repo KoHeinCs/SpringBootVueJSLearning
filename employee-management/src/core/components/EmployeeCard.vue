@@ -29,6 +29,7 @@
 <script lang="ts" setup>
 
 import {useRouter} from "vue-router";
+import employeeService from '@/core/services/EmployeeService'
 
 const props = defineProps(['employee']);
 const router = useRouter();
@@ -41,6 +42,10 @@ const editEmployee = () => {
 }
 
 const deleteEmployee = () => {
+    employeeService.deleteEmployeeById(props.employee.id)
+  .then(() => {
+    window.location.reload();
+  });
 }
 
 </script>

@@ -74,9 +74,7 @@ const submitForm = () => {
 </script>
 
 <style scoped>
-div {
-  border: 2px solid red;
-}
+
 
 .employee_edit_form {
   background-color: #fff;
@@ -98,7 +96,7 @@ label {
 input,
 textarea {
   border-radius: 3px;
-  border: 1px solid #ccc;
+  border: 1px solid #1c4db6;
   padding: 0.5rem;
   font-size: 1.2rem;
   width: 100%;

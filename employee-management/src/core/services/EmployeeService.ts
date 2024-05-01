@@ -24,6 +24,13 @@ class EmployeeService {
                 .catch((err)=>{console.log(err)})
     }
 
+    deleteEmployeeById = (id:any) => {
+        return apiClient
+            .delete(`/employee/delete/${id}`)
+            .then((resp)=> resp.data)
+            .catch((err) => console.log(err))
+    }
+
 
 }
 
