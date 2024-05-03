@@ -1,6 +1,7 @@
 package com.ashwetaw.springbootgenericcrud.config.security;
 
 import com.ashwetaw.springbootgenericcrud.config.security.constant.SecurityConstant;
+import com.ashwetaw.springbootgenericcrud.config.security.filter.JWTAuthenticationEntryPoint;
 import com.ashwetaw.springbootgenericcrud.config.security.filter.JWTAuthorizationFilter;
 import com.ashwetaw.springbootgenericcrud.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +14,6 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
-import org.springframework.security.config.annotation.web.configurers.SessionManagementConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -26,13 +26,14 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * @author koheincs
  * @created at 02/05/2024
  **/
-@EnableWebSecurity(debug = true)
+@EnableWebSecurity
 @Configuration
 @RequiredArgsConstructor
 public class SecurityConfig {
 
     private final UserService userService;
     private final JWTAuthorizationFilter jwtAuthorizationFilter;
+    private final JWTAuthenticationEntryPoint jwtAuthenticationEntryPoint;
 
     @Bean
     public WebMvcConfigurer corsConfig(){
@@ -91,6 +92,10 @@ public class SecurityConfig {
             httpSecurity.sessionManagement(sess->sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
             httpSecurity.addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class);
+
+
+            // handle other unexpected security exceptions
+            httpSecurity.exceptionHandling(exc -> exc.authenticationEntryPoint(jwtAuthenticationEntryPoint));
 
 
 
