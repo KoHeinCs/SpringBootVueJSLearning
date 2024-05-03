@@ -7,6 +7,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -29,10 +31,10 @@ public class ExceptionHandling {
         return ResponseHandler.createHttpResponse(exception.getMessage(),HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<Object> notFoundException(Exception exception){
-        log.error("internal server error happen! ",exception.getMessage());
-        return ResponseHandler.createHttpResponse(ExceptionConstant.INTERNAL_SERVER_ERROR_MSG,HttpStatus.INTERNAL_SERVER_ERROR);
+    @ExceptionHandler(UsernameNotFoundException.class)
+    public ResponseEntity<Object> usernameNotFoundException(UsernameNotFoundException exception) {
+        log.error("usernameNotFoundException happen! ", exception.getMessage());
+        return ResponseHandler.createHttpResponse(exception.getMessage(),HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
@@ -42,6 +44,17 @@ public class ExceptionHandling {
         return ResponseHandler.createHttpResponse(String.format(ExceptionConstant.METHOD_IS_NOT_ALLOWED, supportedMethod),HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
+    @ExceptionHandler(BadCredentialsException.class)
+    public ResponseEntity<Object> badCredentialsException() {
+        log.error("badCredentialsException happen!");
+        return ResponseHandler.createHttpResponse(ExceptionConstant.INCORRECT_CREDENTIALS,HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<Object> notFoundException(Exception exception){
+        log.error("internal server error happen! ",exception.getMessage());
+        return ResponseHandler.createHttpResponse(ExceptionConstant.INTERNAL_SERVER_ERROR_MSG,HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 
 
 
