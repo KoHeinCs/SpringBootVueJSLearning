@@ -15,13 +15,13 @@ public class ResponseHandler {
 
     public static  <T> ResponseEntity<Object> createHttpResponse(T object, String message, HttpStatus httpStatus){
         CommonResponse responseDTO = new CommonResponse(object,message,httpStatus);
-        response.put("response",responseDTO);
-        return new ResponseEntity<>(response,httpStatus);
+        //response.put("response",responseDTO);
+        return new ResponseEntity<>(responseDTO,httpStatus);
     }
 
     public static ResponseEntity<Object> createHttpResponse(String message,HttpStatus httpStatus){
         CommonResponse responseDTO = new CommonResponse(message,httpStatus);
-        response.put("response",responseDTO);
-        return new ResponseEntity<>(response,httpStatus);
+        //response.put("response",responseDTO);
+        return new ResponseEntity<>(responseDTO,httpStatus);
     }
 }
