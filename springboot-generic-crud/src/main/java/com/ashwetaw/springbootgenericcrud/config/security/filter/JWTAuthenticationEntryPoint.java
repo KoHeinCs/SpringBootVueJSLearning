@@ -2,7 +2,9 @@ package com.ashwetaw.springbootgenericcrud.config.security.filter;
 
 import com.ashwetaw.springbootgenericcrud.common.CommonResponse;
 import com.ashwetaw.springbootgenericcrud.config.security.constant.SecurityConstant;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.HttpStatus;
@@ -26,8 +28,17 @@ public class JWTAuthenticationEntryPoint extends Http403ForbiddenEntryPoint {
         response.setStatus(HttpStatus.FORBIDDEN.value());
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         OutputStream outputStream = response.getOutputStream();
+
         ObjectMapper mapper = new ObjectMapper();
-        mapper.writeValue(outputStream,httpResponse);
-        outputStream.flush();
+        // support Java 8 date time apis
+        mapper.registerModule(new JavaTimeModule());
+
+        try {
+            mapper.writeValue(outputStream, httpResponse);
+            outputStream.flush();
+        } catch (JsonProcessingException e) {
+            // Handle the exception (e.g., log the error)
+            e.printStackTrace();
+        }
     }
 }

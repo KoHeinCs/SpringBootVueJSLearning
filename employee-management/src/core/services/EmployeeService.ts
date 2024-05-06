@@ -7,9 +7,7 @@ class EmployeeService {
     getAllEmployees = ():Promise<Employee[]> => {
         return apiClient
             .get("/employee/all")
-            .then((resp) => resp.data.response.data )
-            .catch((err)=> console.log(err))
-
+            .then((resp) =>  resp.data.data)
     }
 
     save = (employee:Employee) => {
@@ -19,21 +17,18 @@ class EmployeeService {
     getEmployeeById = (id:any):Promise<Employee> => {
             return apiClient
                 .get(`/employee/find/${id}`)
-                .then((resp)=> resp.data.response.data)
-                .catch((err)=>{console.log(err)})
+                .then((resp)=> resp.data.data)
     }
 
     deleteEmployeeById = async (id:any) => {
         return await apiClient
             .delete(`/employee/delete/${id}`)
             .then((resp)=> resp.data)
-            .catch((err) => console.log(err))
     }
 
     updateEmployeeById =(id:any,employee:Employee) => {
         return apiClient.post(`/employee/update/${id}`,employee)
             .then((resp)=> resp.data)
-            .catch((error)=> console.log(error))
     }
 
 

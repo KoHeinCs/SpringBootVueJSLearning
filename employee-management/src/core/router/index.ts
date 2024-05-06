@@ -3,6 +3,7 @@ import AboutView from "@/core/views/AboutView.vue";
 import AddEmployeeView from "@/core/views/AddEmployeeView.vue";
 import ShowView from "@/core/views/ShowView.vue"
 import EditEmployeeView from "@/core/views/EditEmployeeView.vue"
+import LoginView from "@/core/views/LoginView.vue";
 import {createRouter, createWebHistory} from "vue-router";
 
 const routes = [
@@ -28,6 +29,11 @@ const routes = [
         path: "/edit/employee/:id",
         name: "edit",
         component: EditEmployeeView
+    },
+    {
+        path: "/login",
+        name: "login" ,
+        component: LoginView
     }
 
 ]

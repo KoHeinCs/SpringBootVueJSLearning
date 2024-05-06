@@ -77,7 +77,7 @@ public class SecurityConfig {
 
             httpSecurity.authenticationProvider(authenticationProvider());
 
-            httpSecurity.cors(AbstractHttpConfigurer::disable);
+            //httpSecurity.cors(AbstractHttpConfigurer::disable);
 
             httpSecurity.csrf(AbstractHttpConfigurer::disable);
 
