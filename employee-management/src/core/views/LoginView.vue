@@ -32,16 +32,28 @@
     </a-form>
   </div>
 
+  <CommonDialog
+      :isClosable = "false"
+      :title = "'Error'"
+      :titlePosition="'center'"
+      :dialogType="'error'"
+      :isOpen = "isDialogOpen"
+      :message ="errorMessage"
+      @handleClose = "isDialogOpen = false"
+  />
 
 </template>
 
 <script setup lang="ts">
 
-import {reactive} from 'vue';
+import {reactive, ref} from 'vue';
 import authService from "@/core/services/AuthService";
 import {useRouter} from "vue-router";
+import CommonDialog from '@/core/components/common/CommonDialog.vue'
 
 const router = useRouter();
+const isDialogOpen = ref(false)
+const errorMessage = ref('')
 
 interface LoginForm {
   username: string,
@@ -64,7 +76,8 @@ const onFinish = (values: any) => {
       router.push({name: "Home"})
     }else {
       window.localStorage.clear();
-      router.push({name:"Login"})
+      showErrorDialog(resp.message);
+      return;
     }
   })
 };
@@ -72,6 +85,12 @@ const onFinish = (values: any) => {
 const onFinishFailed = (errorInfo: any) => {
   console.log('Failed:', errorInfo);
 };
+
+const showErrorDialog = (message:string) => {
+  isDialogOpen.value = true;
+  errorMessage.value = message;
+}
+
 
 </script>
 
