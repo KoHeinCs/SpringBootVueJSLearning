@@ -4,7 +4,9 @@ class AuthService {
 
     login =  (user:any) => {
             return apiClient.post("/auth/login",user)
-                .then((resp)=> resp.data)
+                .then(resp => resp.data)
+                .catch(error => error.response.data)
+
     }
 }
 

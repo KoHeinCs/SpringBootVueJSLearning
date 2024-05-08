@@ -1,9 +1,9 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import router from '@/core/router'
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap/dist/js/bootstrap.bundle'
+import router from '@/core/router';
+import Antd from 'ant-design-vue';
+import 'ant-design-vue/dist/reset.css';
 
 
 
-createApp(App).use(router).mount('#app')
+createApp(App).use(Antd).use(router).mount('#app')

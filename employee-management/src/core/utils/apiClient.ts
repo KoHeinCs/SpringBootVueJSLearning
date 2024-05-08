@@ -9,10 +9,10 @@ const axiosInstance: AxiosInstance = axios.create({
     }
 });
 
-const token = localStorage.getItem("jwtToken");
 
 axiosInstance.interceptors.request.use(
     (config) => {
+        const token = localStorage.getItem("jwtToken");
         config.headers.Authorization = `Bearer ${token}`;
         return config;
     },
