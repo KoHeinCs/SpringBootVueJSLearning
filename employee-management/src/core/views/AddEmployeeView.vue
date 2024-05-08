@@ -1,46 +1,50 @@
 <template>
-  <div class="employee_edit_form">
-    <form @submit.prevent="submitForm">
+  <nav-bar></nav-bar>
+  <a-layout-content style="padding: 0 50px">
+    <div class="employee_edit_form">
+      <form @submit.prevent="submitForm">
 
-      <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" id="name" v-model="employeeToBeSaved.name" required/>
-      </div>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" v-model="employeeToBeSaved.name" required/>
+        </div>
 
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" id="email" v-model="employeeToBeSaved.email" required/>
-      </div>
-      <div class="form-group">
-        <label for="phone">Phone</label>
-        <input
-            type="tel"
-            id="phone"
-            v-model="employeeToBeSaved.phone"
-            required
-        />
-      </div>
-      <div class="form-group">
-        <label for="position">Position</label>
-        <input
-            type="text"
-            id="position"
-            v-model="employeeToBeSaved.position"
-            required
-        />
-      </div>
-      <div class="form-group">
-        <label for="bio">Bio</label>
-        <textarea id="bio" v-model="employeeToBeSaved.bio" required></textarea>
-      </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" v-model="employeeToBeSaved.email" required/>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input
+              type="tel"
+              id="phone"
+              v-model="employeeToBeSaved.phone"
+              required
+          />
+        </div>
+        <div class="form-group">
+          <label for="position">Position</label>
+          <input
+              type="text"
+              id="position"
+              v-model="employeeToBeSaved.position"
+              required
+          />
+        </div>
+        <div class="form-group">
+          <label for="bio">Bio</label>
+          <textarea id="bio" v-model="employeeToBeSaved.bio" required></textarea>
+        </div>
 
-      <div class="form-actions">
-        <button type="submit">Save Employee</button>
-        <button type="button" @click="cancelEdit">Cancel</button>
-      </div>
+        <div class="form-actions">
+          <button type="submit">Save Employee</button>
+          <button type="button" @click="cancelEdit">Cancel</button>
+        </div>
 
-    </form>
-  </div>
+      </form>
+    </div>
+  </a-layout-content>
+
 </template>
 
 <script lang="ts" setup>
@@ -48,6 +52,7 @@ import {ref} from "vue";
 import Employee from "@/core/types/Employee";
 import employeeService from "@/core/services/EmployeeService"
 import {useRouter} from "vue-router";
+import NavBar from "@/core/components/NavBar.vue"
 
 const employeeToBeSaved = ref<Employee>({
   id: 0,

@@ -62,12 +62,12 @@ employeeService.getEmployeeById(id)
 
 const submitForm = () => {
   employeeService.updateEmployeeById(id,editedEmployee.value)
-  .then(() =>{ router.push({ name: "home" });})
+  .then(() =>{ router.push({ name: "Home" });})
 
 }
 
 const cancelEdit = () => {
-  router.push({name: "home"})
+  router.push({name: "Home"})
 }
 
 </script>

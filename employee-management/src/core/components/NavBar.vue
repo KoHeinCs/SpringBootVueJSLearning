@@ -1,16 +1,45 @@
 <template>
-  <nav class="navbar">
-    <div class="navbar-left">
-      <img src="#" alt="Logo" class="navbar-logo" />
-    </div>
-    <div class="navbar-right">
-      <router-link to="/">Home</router-link>
-      <router-link to="/about" class="navbar-link">About</router-link>
-      <router-link to="/add/employee" class="navbar-link">Add Employee</router-link>
-      <router-link to="/login" class="navbar-link">Login</router-link>
-    </div>
-  </nav>
+<!--  <nav class="navbar">-->
+<!--    <div class="navbar-left">-->
+<!--      <img src="#" alt="Logo" class="navbar-logo" />-->
+<!--    </div>-->
+<!--    <div class="navbar-right">-->
+<!--      <router-link to="/">Home</router-link>-->
+<!--      <router-link to="/about" class="navbar-link">About</router-link>-->
+<!--      <router-link to="/add/employee" class="navbar-link">Add Employee</router-link>-->
+<!--      <router-link to="/login" class="navbar-link">Login</router-link>-->
+<!--    </div>-->
+<!--  </nav>-->
+
+  <a-layout-header class="header">
+    <div class="logo" />
+    <a-menu
+        theme="dark"
+        mode="horizontal"
+        :style="{ lineHeight: '64px' }"
+    >
+      <a-menu-item key="Home">
+        <router-link to="/home">Home</router-link>
+      </a-menu-item>
+      <a-menu-item key="About">
+        <router-link to="/about">About</router-link>
+      </a-menu-item>
+      <a-menu-item key="Add">
+        <router-link to="/add/employee" class="navbar-link">Add Employee</router-link>
+      </a-menu-item>
+      <a-menu-item key="Login">
+        <router-link to="/login" class="navbar-link">Login</router-link>
+      </a-menu-item>
+    </a-menu>
+  </a-layout-header>
+
+
 </template>
+
+<script setup lang="ts">
+
+
+</script>
 
 
 

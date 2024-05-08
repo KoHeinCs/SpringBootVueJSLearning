@@ -1,17 +1,13 @@
 <template>
 
-  <div class="jumbotron">
-    <h1>
-      Welcome Back Admin ! <br/><br/>
-      Employees
-    </h1>
-  </div>
-  <div class="container">
+  <nav-bar></nav-bar>
 
+  <a-layout-content style="padding: 0 50px">
     <div v-for="(employee,index) in employees" :key="index">
       <employee-card :employee="employee"></employee-card>
     </div>
-  </div>
+  </a-layout-content>
+
 
 </template>
 
@@ -20,6 +16,7 @@ import employeeService from "@/core/services/EmployeeService"
 import {ref} from "vue";
 import Employee from "@/core/types/Employee";
 import EmployeeCard from "@/core/components/EmployeeCard.vue";
+import NavBar from "@/core/components/NavBar.vue"
 
 let employees = ref<Employee[]>([])
 

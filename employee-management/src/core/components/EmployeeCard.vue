@@ -35,11 +35,11 @@ const props = defineProps(['employee']);
 const router = useRouter();
 
 const showDetails = () => {
-  router.push({name:"details",params:{id: props.employee.id}})
+  router.push({name:"Show",params:{id: props.employee.id}})
 }
 
 const editEmployee = () => {
-  router.push({name:"edit",params:{id:props.employee.id}})
+  router.push({name:"EditEmployee",params:{id:props.employee.id}})
 }
 
 const deleteEmployee = () => {
